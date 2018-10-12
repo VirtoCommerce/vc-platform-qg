@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1539354907629' stop='1539354924693'>
+    <name>Anonymous checkout with coupon:</name>
+    <title>Anonymous checkout with coupon:</title>
+    <test-cases>
+        <test-case start='1539354907631' status='passed' stop='1539354924556'>
+            <name>[Positive] as anonymous user I be able to do checkout with coupon</name>
+            <title>[Positive] as anonymous user I be able to do checkout with coupon</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1539354912375' status='passed' stop='1539354919892'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539354919892' status='passed' stop='1539354924385'>
+                    <name>I click "//a[text()='Cell phones']"</name>
+                    <title>I click "//a[text()='Cell phones']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539354924385' status='passed' stop='1539354924556'>
+                    <name>I wait in url "/cell-phones"</name>
+                    <title>I wait in url "/cell-phones"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

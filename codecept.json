@@ -1,0 +1,40 @@
+{
+  "output": "./output",
+  "helpers": {
+    "Protractor": {
+      "url": "https://demo.virtocommerce.com/",
+      "driver": "hosted",
+      "browser": "chrome",
+      "seleniumAddress": "http://localhost:4444/wd/hub",
+      "angular": "true",
+      "rootElement": "body",
+      "fullPageScreenshots": "true"
+    }
+  },
+  "include": {
+    "I": "./steps_file.js",
+    "createAccountPage": "./pages/createAccount.js",
+    "navigationPage": "./pages/navigation.js",
+    "headerPage": "./pages/header.js",
+    "footerQuickLinksPage": "./pages/footerQuickLinks.js",
+    "footerGetInTouchPage": "./pages/footerGetInTouch.js",
+    "footerNewsletterPage": "./pages/footerNewsletter.js",
+    "productListPage": "./pages/productList.js"
+  },
+  "mocha": {},
+  "bootstrap": false,
+  "teardown": null,
+  "hooks": [],
+  "gherkin": {},
+  "plugins": {
+    "screenshotOnFail": {
+      "enabled": true
+    },
+    "allure": {
+      "enabled": true
+    }
+  },
+  "tests": "./tests/*_test.js",
+  "timeout": 10000,
+  "name": "QualityGate"
+}
