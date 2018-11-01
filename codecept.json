@@ -19,7 +19,11 @@
     "footerQuickLinksPage": "./pages/footerQuickLinks.js",
     "footerGetInTouchPage": "./pages/footerGetInTouch.js",
     "footerNewsletterPage": "./pages/footerNewsletter.js",
-    "productListPage": "./pages/productList.js"
+    "productListPage": "./pages/productList.js",
+    "modalDialogFragment": "./fragments/modalDialog.js",
+    "cartItemCountFragment": "./fragments/cartItemCount.js",
+    "shippingAdressFragment": "./fragments/shippingAdress.js",
+    "orderSummaryFragment": "./fragments/orderSummary.js"
   },
   "mocha": {},
   "bootstrap": false,
