@@ -13,6 +13,10 @@ module.exports = {
             password:"#create_password",
             submitButton:"//input[@type='submit'][contains(@value, 'Create')]"
         },
+    URLs:
+        {
+          URL:"/account/register"
+        },
 
     sendNewUserForm(firstName, lastName, email, userName, password) {
         I.fillField(this.accountForm.firstName, firstName);

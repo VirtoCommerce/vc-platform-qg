@@ -1,0 +1,243 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1539959961958' stop='1539960013657'>
+    <name>Anonymous checkout with coupon:</name>
+    <title>Anonymous checkout with coupon:</title>
+    <test-cases>
+        <test-case start='1539959961960' status='failed' stop='1539960013306'>
+            <name>[Positive] as anonymous user I be able to do checkout with coupon</name>
+            <title>[Positive] as anonymous user I be able to do checkout with coupon</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1539959970126' status='passed' stop='1539959977534'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959977534' status='passed' stop='1539959980149'>
+                    <name>I click "//a[text()='Cell phones']"</name>
+                    <title>I click "//a[text()='Cell phones']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959980149' status='passed' stop='1539959980215'>
+                    <name>I wait in url "/cell-phones"</name>
+                    <title>I wait in url "/cell-phones"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959980216' status='passed' stop='1539959980444'>
+                    <name>I click {xpath: //button[@title='Add to cart'][position()=1]}</name>
+                    <title>I click {xpath: //button[@title='Add to cart'][position()=1]}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959980456' status='passed' stop='1539959983458'>
+                    <name>I wait for element "//div[contains(@class, 'modal-dialog')]"</name>
+                    <title>I wait for element "//div[contains(@class, 'modal-dialog')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959983459' status='passed' stop='1539959984758'>
+                    <name>I click "//button[@class='btn'][1]"</name>
+                    <title>I click "//button[@class='btn'][1]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959984759' status='passed' stop='1539959985022'>
+                    <name>I wait for element "//form[@name = 'formCart']"</name>
+                    <title>I wait for element "//form[@name = 'formCart']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959985023' status='passed' stop='1539959985040'>
+                    <name>I scroll page to bottom </name>
+                    <title>I scroll page to bottom </title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959985041' status='passed' stop='1539959985161'>
+                    <name>I click "//button[contains(.,'Checkout')]"</name>
+                    <title>I click "//button[contains(.,'Checkout')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959985161' status='passed' stop='1539959989878'>
+                    <name>I grab text from "//span[@class = 'ng-binding']"</name>
+                    <title>I grab text from "//span[@class = 'ng-binding']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959989883' status='passed' stop='1539959990246'>
+                    <name>orderSummaryFragment: addCouponCode </name>
+                    <title>orderSummaryFragment: addCouponCode </title>
+                    <attachments/>
+                    <steps>
+                        <step start='1539959989883' status='passed' stop='1539959990070'>
+                            <name>I fill field "#CouponCode", "test"</name>
+                            <title>I fill field "#CouponCode", "test"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959990070' status='passed' stop='1539959990246'>
+                            <name>I click "Apply"</name>
+                            <title>I click "Apply"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1539959990246' status='passed' stop='1539959992379'>
+                    <name>I dont see "$113.99", "//span[@class = 'ng-binding'][1]"</name>
+                    <title>I dont see "$113.99", "//span[@class = 'ng-binding'][1]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959992380' status='passed' stop='1539959992716'>
+                    <name>shippingAdressFragment: sendAddressForm </name>
+                    <title>shippingAdressFragment: sendAddressForm </title>
+                    <attachments/>
+                    <steps>
+                        <step start='1539959992380' status='passed' stop='1539959992712'>
+                            <name>I fill field "#Email", "Alex.Zol@gmail.com"</name>
+                            <title>I fill field "#Email", "Alex.Zol@gmail.com"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1539959992716' status='passed' stop='1539959995455'>
+                    <name>Within "//form[@name = 'addrForm']" </name>
+                    <title>Within "//form[@name = 'addrForm']" </title>
+                    <attachments/>
+                    <steps>
+                        <step start='1539959992717' status='passed' stop='1539959993016'>
+                            <name>I fill field "#FirstName", "Alex"</name>
+                            <title>I fill field "#FirstName", "Alex"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959993016' status='passed' stop='1539959993287'>
+                            <name>I fill field "#LastName", "Zol"</name>
+                            <title>I fill field "#LastName", "Zol"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959993288' status='passed' stop='1539959993553'>
+                            <name>I fill field "#Line1", "st. Kirova"</name>
+                            <title>I fill field "#Line1", "st. Kirova"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959993553' status='passed' stop='1539959993727'>
+                            <name>I fill field "#Line2", "5"</name>
+                            <title>I fill field "#Line2", "5"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959993728' status='passed' stop='1539959994004'>
+                            <name>I fill field "#City", "Moscow"</name>
+                            <title>I fill field "#City", "Moscow"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959994004' status='passed' stop='1539959994179'>
+                            <name>I select option "//select[@name='Country']", "Russia"</name>
+                            <title>I select option "//select[@name='Country']", "Russia"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959994179' status='passed' stop='1539959994766'>
+                            <name>I wait for element "//select[@name='Region']"</name>
+                            <title>I wait for element "//select[@name='Region']"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959994766' status='passed' stop='1539959994895'>
+                            <name>I select option "//select[@name='Region']", "Moscow"</name>
+                            <title>I select option "//select[@name='Region']", "Moscow"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959994895' status='passed' stop='1539959995252'>
+                            <name>I fill field "#PostalCode", "3241234"</name>
+                            <title>I fill field "#PostalCode", "3241234"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                        <step start='1539959995252' status='passed' stop='1539959995454'>
+                            <name>I click "//button[@name='button']"</name>
+                            <title>I click "//button[@name='button']"</title>
+                            <attachments/>
+                            <steps/>
+                        </step>
+                    </steps>
+                </step>
+                <step start='1539959995455' status='passed' stop='1539959998340'>
+                    <name>I wait for element "//input[@id='FixedRate:Ground']"</name>
+                    <title>I wait for element "//input[@id='FixedRate:Ground']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959998340' status='passed' stop='1539959998405'>
+                    <name>I grab text from "//span[@class = 'ng-binding'][1]"</name>
+                    <title>I grab text from "//span[@class = 'ng-binding'][1]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959998406' status='passed' stop='1539959998531'>
+                    <name>I click "//input[@id='FixedRate:Ground']"</name>
+                    <title>I click "//input[@id='FixedRate:Ground']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539959998531' status='passed' stop='1539960000547'>
+                    <name>I dont see ["test","$107.99"], "//span[@class = 'ng-binding']"</name>
+                    <title>I dont see ["test","$107.99"], "//span[@class = 'ng-binding']"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539960000548' status='passed' stop='1539960000705'>
+                    <name>I wait for clickable "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]"</name>
+                    <title>I wait for clickable "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539960000705' status='passed' stop='1539960000826'>
+                    <name>I click "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]"</name>
+                    <title>I click "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539960000826' status='passed' stop='1539960007081'>
+                    <name>I wait for clickable "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]"</name>
+                    <title>I wait for clickable "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539960007081' status='passed' stop='1539960007228'>
+                    <name>I click "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]"</name>
+                    <title>I click "//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1539960007228' status='failed' stop='1539960013306'>
+                    <name>I wait in url "/cart/thanks/"</name>
+                    <title>I wait in url "/cart/thanks/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='1c3fa01e-d017-4874-b7fb-efa03aa8f3a7-attachment.png' type='image/png' size='85917'/>
+            </attachments>
+            <failure>
+                <message>expected url to include /cart/thanks/, but found https://demo.virtocommerce.com/Electronics/en-US/cart/thanks/CO181019-00002</message>
+                <stack-trace>Error: expected url to include /cart/thanks/, but found https://demo.virtocommerce.com/Electronics/en-US/cart/thanks/CO181019-00002
+                    at browser.wait.catch (/home/aleksandr/.nvm/versions/node/v10.9.0/lib/node_modules/codeceptjs/lib/helper/Protractor.js:1399:17)
+                    at process._tickCallback (internal/process/next_tick.js:68:7)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

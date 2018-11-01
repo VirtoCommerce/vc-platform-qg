@@ -8,7 +8,7 @@ Scenario('[Positive] as user I be able to create new account (Alex.Zol)', (I, cr
     I.click(headerPage.headerNav.createAnAccount);
     I.waitInUrl('/account/register');
     createAccountPage.sendNewUserForm("Alex","Zol","alex.zol@gmail.com","Alex.Zol","Az1234567");
-    I.waitInUrl('/account#/profile');
+    I.waitInUrl(createAccountPage.URLs.URL);
     I.seeElement(locate("span").withText("Logged in as"));
 
     I.seeTextEquals("Alex");   // Result
