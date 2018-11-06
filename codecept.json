@@ -17,6 +17,7 @@
     "navigationPage": "./pages/navigation.js",
     "headerPage": "./pages/header.js",
     "productListPage": "./pages/productList.js",
+    "addProduct": "./pages/addProduct.js",
     "modalDialogFragment": "./fragments/modalDialog.js",
     "cartItemCountFragment": "./fragments/cartItemCount.js",
     "shippingAdressFragment": "./fragments/shippingAdress.js",
@@ -35,7 +36,7 @@
       "enabled": true
     }
   },
-  "tests": "./tests/*_test.js",
+  "tests":  "./tests/e2eAddProduct_test.js",
   "timeout": 10000,
   "name": "QualityGate"
 }

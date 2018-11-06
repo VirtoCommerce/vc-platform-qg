@@ -7,7 +7,8 @@ module.exports = {
         {
             productListItem:
                 {
-                    addToCardButton:"//button[@title='Add to cart']"
-                }
+                    addToCardButton: "//button[@title='Add to cart']"
+                },
+            inputFixedRateGround: "//input[@id='FixedRate:Ground']"
         }
 }
