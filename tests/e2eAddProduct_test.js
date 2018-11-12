@@ -2,17 +2,13 @@
 
 Feature('Add product');
 
-Scenario('[Positive] First one', async (I, addProduct, modalDialogFragment) => {
-    I.amOnPage('account/login');
-    
-    within('#customer_login', () => {
-        I.fillField('#customer_user_name', 'admin');
-        I.fillField('#customer_password', 'store');
-        I.click('input[type="submit"]');
-    });
-
+Before((I) => {
     I.amOnPage('');
+    I.signIn();
+    I.amOnPage('');
+});
 
+Scenario('[Positive] First one', async (I, addProduct, modalDialogFragment) => {
     I.click(addProduct.firstProduct);
 
     I.scrollPageToBottom();

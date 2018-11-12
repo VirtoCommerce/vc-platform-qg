@@ -1,12 +1,28 @@
 'use strict';
-// in this file you can append custom step methods to 'I' object
 
-module.exports = function() {
-  return actor({
+module.exports = function () {
+    return actor({
 
-    // Define custom steps here, use 'this' to access default methods of I.
-    // It is recommended to place a general 'login' function here.
+        credentials: {
+            user: 'admin',
+            password: 'store'
+        },
 
+        loginForm: {
+            selector: '#customer_login',
+            signInLink: '#customer_login_link',
+            user: '#customer_user_name',
+            password: '#customer_password',
+            loginButton: 'input[type="submit"]'
+        },
 
-  });
-}
+        signIn: function () {
+            this.click(this.loginForm.signInLink);
+            within(this.loginForm.selector, () => {
+                this.fillField(this.loginForm.user, this.credentials.user);
+                this.fillField(this.loginForm.password, this.credentials.password);
+                this.click(this.loginForm.loginButton);
+            });
+        }
+    });
+};
