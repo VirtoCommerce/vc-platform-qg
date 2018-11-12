@@ -37,7 +37,7 @@
       "enabled": true
     }
   },
-  "tests": "./tests/*_test.js",
+  "tests":  "./tests/*_test.js",
   "timeout": 10000,
   "name": "QualityGate"
 }
