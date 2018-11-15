@@ -22,7 +22,9 @@
     "modalDialogFragment": "./fragments/modalDialog.js",
     "cartItemCountFragment": "./fragments/cartItemCount.js",
     "shippingAdressFragment": "./fragments/shippingAdress.js",
-    "orderSummaryFragment": "./fragments/orderSummary.js"
+    "orderSummaryFragment": "./fragments/orderSummary.js",
+    "search": "./pages/search.js",
+    "productCompare": "./pages/productCompare.js"
   },
   "mocha": {},
   "bootstrap": false,
