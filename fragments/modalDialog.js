@@ -10,6 +10,10 @@ module.exports = {
         },
         productIsAddedToCart: {
             goToCartButton: '//button/span[contains(., "Go to cart")]'
+        },
+        compareList: {
+            goToCompareListButton: '//button[text()="Go to compare list"]',
+            continueShoppingButton: '//button[text()="Continue shopping"]'
         }
     }
 };
