@@ -26,7 +26,9 @@
     "search": "./pages/search.js",
     "productCompare": "./pages/productCompare.js",
     "storeOptions": "./pages/storeOptions.js",
-    "newSubscription": "./pages/newSubscription.js"
+    "newSubscription": "./pages/newSubscription.js",
+    "bulkOrder": "./pages/bulkOrder.js",
+    "blogs": "./pages/blogs.js"
   },
   "mocha": {},
   "bootstrap": false,
