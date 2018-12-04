@@ -24,7 +24,11 @@
     "shippingAdressFragment": "./fragments/shippingAdress.js",
     "orderSummaryFragment": "./fragments/orderSummary.js",
     "search": "./pages/search.js",
-    "productCompare": "./pages/productCompare.js"
+    "productCompare": "./pages/productCompare.js",
+    "storeOptions": "./pages/storeOptions.js",
+    "newSubscription": "./pages/newSubscription.js",
+    "bulkOrder": "./pages/bulkOrder.js",
+    "blogs": "./pages/blogs.js"
   },
   "mocha": {},
   "bootstrap": false,

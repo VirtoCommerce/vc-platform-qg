@@ -16,6 +16,16 @@ module.exports = function () {
             loginButton: 'input[type="submit"]'
         },
 
+        customerInfo: {
+            email: 'spo@virtoway.com',
+            firstName: 'E2E',
+            lastName: 'customer',
+            company: 'E2E Company',
+            address: 'E2E Address',
+            city: 'E2E City',
+            postalCode: '555'
+        },
+
         signIn: function () {
             this.click(this.loginForm.signInLink);
             within(this.loginForm.selector, () => {
