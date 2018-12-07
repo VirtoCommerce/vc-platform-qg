@@ -9,6 +9,7 @@ module.exports = {
                 {
                     addToCardButton: "//button[@title='Add to cart']"
                 },
-            inputFixedRateGround: "//input[@id='FixedRate:Ground']"
+            inputFixedRateGround: "//input[contains(@id,'FixedRate:Ground')]"
+
         }
 }
