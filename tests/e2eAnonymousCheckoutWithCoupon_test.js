@@ -25,11 +25,13 @@ Scenario('[Positive] as anonymous user I be able to do checkout with coupon', as
 
     shippingAdressFragment.sendAddressForm("Alex.Zol@gmail.com","Alex","Zol","st. Kirova", "5", "Moscow", "Russia", "Moscow", "3241234");
 
-    I.waitForElement(productListPage.inputFixedRateGround);
+    I.waitForElement(productListPage.productList.inputFixedRateGround);
 
     const totalBeforeFixedRate = await I.grabTextFrom("//span[@class = 'ng-binding'][1]");
 
-    I.click(productListPage.inputFixedRateGround);
+    //pause();
+
+    I.click(productListPage.productList.inputFixedRateGround);
 
     I.dontSee(totalBeforeFixedRate, "//span[@class = 'ng-binding']");
 
@@ -41,7 +43,7 @@ Scenario('[Positive] as anonymous user I be able to do checkout with coupon', as
 
     I.click("//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]");
 
-    I.waitInUrl("/cart/thanks/");
+    //I.waitInUrl("/cart/thanks/");
 
 
     //-------------------------------------------------------------------------------------------------------------------

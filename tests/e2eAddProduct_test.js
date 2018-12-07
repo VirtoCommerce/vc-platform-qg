@@ -1,14 +1,14 @@
 /// <reference path="../steps.d.ts" />
 
-Feature('Add product');
+Feature('As logged user I should be able add product to the wish list');
 
 Before((I) => {
     I.amOnPage('');
     I.signIn();
-    I.amOnPage('');
 });
 
-Scenario('[Positive] First one', async (I, addProduct, modalDialogFragment) => {
+Scenario('[Positive] I am try add first one', async (I, addProduct, modalDialogFragment) => {
+
     I.click(addProduct.firstProduct);
 
     I.scrollPageToBottom();
