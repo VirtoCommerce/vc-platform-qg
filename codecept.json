@@ -28,7 +28,8 @@
     "storeOptions": "./pages/storeOptions.js",
     "newSubscription": "./pages/newSubscription.js",
     "bulkOrder": "./pages/bulkOrder.js",
-    "blogs": "./pages/blogs.js"
+    "blogs": "./pages/blogs.js",
+    "recovery": "./pages/recovery.js"
   },
   "mocha": {},
   "bootstrap": false,
