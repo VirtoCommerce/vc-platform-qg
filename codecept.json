@@ -29,6 +29,7 @@
     "newSubscription": "./pages/newSubscription.js",
     "bulkOrder": "./pages/bulkOrder.js",
     "blogs": "./pages/blogs.js",
+    "recovery": "./pages/recovery.js"
     "createAddressPage": "./pages/createAddress.js"
   },
   "mocha": {},
