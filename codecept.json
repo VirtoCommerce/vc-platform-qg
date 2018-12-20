@@ -46,6 +46,6 @@
     }
   },
   "tests": "./tests/*_test.js",
-  "timeout": 10000,
+  "timeout": 20000,
   "name": "QualityGate"
 }
