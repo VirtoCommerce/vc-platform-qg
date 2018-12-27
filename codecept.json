@@ -9,6 +9,12 @@
       "angular": "true",
       "rootElement": "body",
       "fullPageScreenshots": "true"
+    },
+    "REST": {
+      "endpoint": "http://demo.virtocommerce.com/admin/api/",
+      "defaultHeaders": {
+        "api_key": "a348fa7508d342f6a32f8bf6c6681a2a"
+      }
     }
   },
   "include": {
@@ -29,7 +35,6 @@
     "newSubscription": "./pages/newSubscription.js",
     "bulkOrder": "./pages/bulkOrder.js",
     "blogs": "./pages/blogs.js",
-    "recovery": "./pages/recovery.js",
     "createAddressPage": "./pages/createAddress.js"
   },
   "mocha": {},
@@ -46,6 +51,6 @@
     }
   },
   "tests": "./tests/*_test.js",
-  "timeout": 20000,
+  "timeout": 10000,
   "name": "QualityGate"
 }
