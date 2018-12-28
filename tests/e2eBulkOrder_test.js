@@ -2,11 +2,16 @@
 
 Feature('Bulk order creation');
 
-Scenario('[Positive] Create', async (I, bulkOrder) => {
+Scenario('[Positive] Create', async (I, siteNavigation, bulkOrder) => {
     I.amOnPage('');
-
-    I.waitForElement(bulkOrder.inset, 10);
-    I.click(bulkOrder.inset);
+    var moreMenuExistsOnPage = await I.executeScript(() => document.getElementById('moreMenu') != null);
+    if (moreMenuExistsOnPage) {
+        I.moveCursorTo(siteNavigation.moreMenu.selector);
+        I.waitForVisible(siteNavigation.moreMenu.insets.bulkOrder, 5);
+        await I.click(siteNavigation.moreMenu.insets.bulkOrder);
+    } else {
+        await I.click(siteNavigation.insets.bulkOrder);
+    }
 
     var firstProductQuantity = '2';
     var secondProductQuantity = '4';
@@ -17,7 +22,7 @@ Scenario('[Positive] Create', async (I, bulkOrder) => {
     I.fillField(bulkOrder.secondProduct.quantity, secondProductQuantity);
 
     I.scrollPageToBottom();
-    I.click(bulkOrder.addToCartButton);
+    await I.click(bulkOrder.addToCartButton);
 
     I.waitForValue(bulkOrder.shoppingCart.products.first, secondProductQuantity);
     I.waitForValue(bulkOrder.shoppingCart.products.second, firstProductQuantity);
