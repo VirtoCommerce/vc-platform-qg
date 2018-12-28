@@ -1,44 +1,51 @@
 const I = actor();
 
 module.exports = {
+    emailForm: {
+        email: "#Email"
+    },
 
-    // insert your locators and methods here
-    emailForm:
-        {
-            email: "#Email",
-        },
+    addressForm: {
+        form: "//form[@name = 'addrForm']",
+        firstName: "#FirstName",
+        lastName: "#LastName",
+        addressLine1: "#Line1",
+        addressLine2: "#Line2",
+        city: "#City",
+        country: "//select[@name='Country']",
+        region: "//select[@name='Region']",
+        postalCode: "#PostalCode",
+        submitButton: "//button[@name='button']"
+    },
 
-    addressForm:
-        {
-            form: "//form[@name = 'addrForm']",
-            firstName: "#FirstName",
-            lastName: "#LastName",
-            addressLine1: "#Line1",
-            addressLine2: "#Line2",
-            city: "#City",
-            country: "//select[@name='Country']",
-            region: "//select[@name='Region']",
-            postalCode: "#PostalCode",
-            submitButton: "//button[@name='button']"
-        },
+    user: {
+        email: "Alex.Zol@gmail.com",
+        firstName: "Alex",
+        lastName: "Zol",
+        addressLine1: "st. Kirova",
+        addressLine2: "5",
+        city: "Moscow",
+        country: "Russia",
+        region: "Moscow",
+        postalCode: "3241234"
+    },
 
-    sendAddressForm(email, firstName, lastName, addressLine1, addressLine2, city, country, region, postalCode) {
+    totalSum: '//div[@class="list-price"]/span',
+    paymentMethodButton: '//button/span[text()="Payment method"]/..',
+    createOrderButton: '//button/span[text()="Create order"]/..',
 
-        I.fillField(this.emailForm.email, email);
-
+    sendAddressForm() {
+        I.fillField(this.emailForm.email, this.user.email);
         within(this.addressForm.form, () => {
-
-            I.fillField(this.addressForm.firstName, firstName);
-            I.fillField(this.addressForm.lastName, lastName);
-            I.fillField(this.addressForm.addressLine1, addressLine1);
-            I.fillField(this.addressForm.addressLine2, addressLine2);
-            I.fillField(this.addressForm.city, city);
-            I.selectOption(this.addressForm.country, country);
-            I.waitForElement(this.addressForm.region);
-            I.selectOption(this.addressForm.region, region);
-            I.fillField(this.addressForm.postalCode, postalCode);
+            I.fillField(this.addressForm.firstName, this.user.firstName);
+            I.fillField(this.addressForm.lastName, this.user.lastName);
+            I.fillField(this.addressForm.addressLine1, this.user.addressLine1);
+            I.fillField(this.addressForm.addressLine2, this.user.addressLine2);
+            I.fillField(this.addressForm.city, this.user.city);
+            I.selectOption(this.addressForm.country, this.user.country);
+            I.selectOption(this.addressForm.region, this.user.region);
+            I.fillField(this.addressForm.postalCode, this.user.postalCode);
             I.click(this.addressForm.submitButton);
-
         });
     }
-}
+};
