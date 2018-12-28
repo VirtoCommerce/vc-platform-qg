@@ -23,6 +23,7 @@
     "cartItemCountFragment": "./fragments/cartItemCount.js",
     "shippingAdressFragment": "./fragments/shippingAdress.js",
     "orderSummaryFragment": "./fragments/orderSummary.js",
+    "siteNavigation": "./fragments/siteNavigation.js",
     "search": "./pages/search.js",
     "productCompare": "./pages/productCompare.js",
     "storeOptions": "./pages/storeOptions.js",
@@ -30,7 +31,12 @@
     "bulkOrder": "./pages/bulkOrder.js",
     "blogs": "./pages/blogs.js",
     "recovery": "./pages/recovery.js",
-    "createAddressPage": "./pages/createAddress.js"
+    "createAddressPage": "./pages/createAddress.js",
+    "glossary": "./pages/vccom/glossary.js",
+    "bladeConstructor": "./pages/vccom/bladeConstructor.js",
+    "docs": "./pages/vccom/docs.js",
+    "mainPage": "./pages/vccom/mainPage.js",
+    "sitemap": "./pages/vccom/sitemap.js"
   },
   "mocha": {},
   "bootstrap": false,
@@ -46,6 +52,6 @@
     }
   },
   "tests": "./tests/*_test.js",
-  "timeout": 20000,
+  "timeout": 10000,
   "name": "QualityGate"
 }

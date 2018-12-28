@@ -21,9 +21,10 @@ Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
     assert.equal(displaySizeDE, storeOptions.productDetails.displaySizeDE);
     assert.equal(weAlsoRecommendDE, storeOptions.productDetails.weAlsoRecommendDE);
     assert.ok(comparePriceDE.indexOf(storeOptions.productDetails.comparePriceDE) > -1);
-
-    await I.moveCursorTo(storeOptions.storeSpan);
-    await I.moveCursorTo(storeOptions.currency.eur.selector);
+    
+    await I.moveCursorTo(storeOptions.selector);
+    await I.moveCursorTo(storeOptions.currency.selector);
+    await I.click(storeOptions.currency.eur.selector);
     await I.click(storeOptions.firstProduct);
 
     var price = await I.grabTextFrom(storeOptions.productDetails.price);
