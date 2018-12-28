@@ -3,6 +3,7 @@
 module.exports = {
     selector: '//div[@class="head-switch"]/span[contains(text(), "Store:")]',
     currency: {
+        selector: '//div[@class="currency"]/span/span',
         eur: {
             sign: '€',
             selector: '//div[@class="currency"]/ul/li/a[text()="EUR"]'

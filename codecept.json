@@ -23,6 +23,7 @@
     "cartItemCountFragment": "./fragments/cartItemCount.js",
     "shippingAdressFragment": "./fragments/shippingAdress.js",
     "orderSummaryFragment": "./fragments/orderSummary.js",
+    "siteNavigation": "./fragments/siteNavigation.js",
     "search": "./pages/search.js",
     "productCompare": "./pages/productCompare.js",
     "storeOptions": "./pages/storeOptions.js",

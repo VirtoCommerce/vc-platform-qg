@@ -12,10 +12,12 @@ Scenario('[Positive] I am try add first one', async (I, addProduct, modalDialogF
     I.click(addProduct.firstProduct);
 
     I.scrollPageToBottom();
+    I.waitForElement(addProduct.productInfo.addToWishlistButton);
     I.waitForVisible(addProduct.productInfo.addToWishlistButton);
     I.waitForClickable(addProduct.productInfo.addToWishlistButton);
     I.click(addProduct.productInfo.addToWishlistButton);
 
+    I.waitForElement(addProduct.productInfo.wishListElement, 15);
     I.click(addProduct.productInfo.wishListElement);
     I.click(modalDialogFragment.modalDialog.pleaseSelectList.addToList);
     I.click(modalDialogFragment.modalDialog.viewYourListButton);
