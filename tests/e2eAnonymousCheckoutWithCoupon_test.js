@@ -4,15 +4,15 @@ Feature('Anonymous checkout with coupon');
 
 Scenario('[Positive] as anonymous user I be able to do checkout with coupon', async (I, navigationPage, productListPage, modalDialogFragment, cartItemCountFragment, shippingAdressFragment, orderSummaryFragment) => {
     I.amOnPage('');
-    I.click(navigationPage.accessibleNav.cellPhones);
+    await I.click(navigationPage.accessibleNav.cellPhones);
     I.waitInUrl('/cell-phones');
     I.say("I found first item with button " + locate(productListPage.productList.productListItem.addToCardButton).first());
-    I.click(locate(productListPage.productList.productListItem.addToCardButton).first());
-    I.waitForElement(modalDialogFragment.modalDialog.modalWIndow);
-    I.click(modalDialogFragment.modalDialog.goToCardButton);
-    I.waitForElement(cartItemCountFragment.cartItemCount.formItem);
+    await I.click(locate(productListPage.productList.productListItem.addToCardButton).first());
+    I.waitForElement(modalDialogFragment.modalDialog.modalWIndow, 10);
+    await I.click(modalDialogFragment.modalDialog.goToCardButton);
+    I.waitForElement(cartItemCountFragment.cartItemCount.formItem, 10);
     I.scrollPageToBottom();
-    I.click(cartItemCountFragment.cartItemCount.formSubmitButton);
+    await I.click(cartItemCountFragment.cartItemCount.formSubmitButton);
 
     const totalBefore = await I.grabTextFrom(shippingAdressFragment.totalSum);
     orderSummaryFragment.addCouponCode("test");
@@ -20,14 +20,14 @@ Scenario('[Positive] as anonymous user I be able to do checkout with coupon', as
     shippingAdressFragment.sendAddressForm();
 
     const totalBeforeFixedRate = await I.grabTextFrom(shippingAdressFragment.totalSum);
-    I.click(productListPage.productList.inputFixedRateGround);
+    await I.click(productListPage.productList.inputFixedRateGround);
     I.dontSee(totalBeforeFixedRate, shippingAdressFragment.totalSum);
 
-    I.waitForClickable(shippingAdressFragment.paymentMethodButton);
-    I.click(shippingAdressFragment.paymentMethodButton);
+    I.waitForClickable(shippingAdressFragment.paymentMethodButton, 10);
+    await I.click(shippingAdressFragment.paymentMethodButton);
 
-    I.waitForClickable(shippingAdressFragment.createOrderButton);
-    I.click(shippingAdressFragment.createOrderButton);
+    I.waitForClickable(shippingAdressFragment.createOrderButton, 10);
+    await I.click(shippingAdressFragment.createOrderButton);
 
     I.waitForElement(productListPage.productList.order, 20);
     var order = await I.grabTextFrom(productListPage.productList.order);
