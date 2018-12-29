@@ -4,8 +4,8 @@ module.exports = function () {
     return actor({
 
         credentials: {
-            user: 'admin',
-            password: 'store'
+            user: 'test_user@mail.com',
+            password: 'aA111111'
         },
 
         loginForm: {
