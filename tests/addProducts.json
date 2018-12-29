@@ -1,0 +1,37 @@
+{
+  "sku": "string",
+  "name": "string",
+  "status": "Inactive",
+  "brand": {
+    "id": "string",
+    "name": "string",
+    "brandGroup": "string"
+  },
+  "brandGroup": {
+    "id": "string",
+    "name": "string"
+  },
+  "categories": [
+    {
+      "id": "string",
+      "name": "string"
+    }
+  ],
+  "description": "string",
+  "imageUrls": [
+    "string"
+  ],
+  "packageName": "string",
+  "packageType": "string",
+  "packageSize": 0,
+  "unitType": "string",
+  "unitVolume": 0,
+  "unitName": "string",
+  "productVolume": 0,
+  "customProperties": [
+    {
+      "name": "string",
+      "value": "string"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ﻿const I = actor();
 
 module.exports = {
-    selector: '//div[@class="head-switch"]/span[contains(text(), "Store:")]',
+    storeSelector: '//div[@class="head-switch"]/span[contains(text(), "Store:")]',
     currency: {
         eur: {
             sign: '€',
