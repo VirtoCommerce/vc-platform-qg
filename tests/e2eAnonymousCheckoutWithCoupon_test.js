@@ -3,8 +3,7 @@
 Feature('Anonymous checkout with coupon');
 
 Scenario('[Positive] as anonymous user I be able to do checkout with coupon', async (I, navigationPage, productListPage, modalDialogFragment, cartItemCountFragment, shippingAdressFragment, orderSummaryFragment) => {
-
-    I.amOnPage("/");
+    I.amOnPage('');
     I.click(navigationPage.accessibleNav.cellPhones);
     I.waitInUrl('/cell-phones');
     I.say("I found first item with button " + locate(productListPage.productList.productListItem.addToCardButton).first());
@@ -12,42 +11,26 @@ Scenario('[Positive] as anonymous user I be able to do checkout with coupon', as
     I.waitForElement(modalDialogFragment.modalDialog.modalWIndow);
     I.click(modalDialogFragment.modalDialog.goToCardButton);
     I.waitForElement(cartItemCountFragment.cartItemCount.formItem);
-    I.scrollPageToBottom(); // need for move Accept layer to down
+    I.scrollPageToBottom();
     I.click(cartItemCountFragment.cartItemCount.formSubmitButton);
 
-    //------------------------------------------- need to refactoring ---------------------------------------------------
-
-    const totalBefore = await I.grabTextFrom("//span[@class = 'ng-binding']");
-
+    const totalBefore = await I.grabTextFrom(shippingAdressFragment.totalSum);
     orderSummaryFragment.addCouponCode("test");
+    I.dontSee(totalBefore, shippingAdressFragment.totalSum);
+    shippingAdressFragment.sendAddressForm();
 
-    I.dontSee(totalBefore, "//span[@class = 'ng-binding'][1]");
-
-    shippingAdressFragment.sendAddressForm("Alex.Zol@gmail.com","Alex","Zol","st. Kirova", "5", "Moscow", "Russia", "Moscow", "3241234");
-
-    I.waitForElement(productListPage.productList.inputFixedRateGround);
-
-    const totalBeforeFixedRate = await I.grabTextFrom("//span[@class = 'ng-binding'][1]");
-
-    //pause();
-
+    const totalBeforeFixedRate = await I.grabTextFrom(shippingAdressFragment.totalSum);
     I.click(productListPage.productList.inputFixedRateGround);
+    I.dontSee(totalBeforeFixedRate, shippingAdressFragment.totalSum);
 
-    I.dontSee(totalBeforeFixedRate, "//span[@class = 'ng-binding']");
+    I.waitForClickable(shippingAdressFragment.paymentMethodButton);
+    I.click(shippingAdressFragment.paymentMethodButton);
 
-    I.waitForClickable("//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]");
+    I.waitForClickable(shippingAdressFragment.createOrderButton);
+    I.click(shippingAdressFragment.createOrderButton);
 
-    I.click("//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Payment method')]");
-
-    I.waitForClickable("//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]");
-
-    I.click("//button[@class='step__footer__continue-btn btn ng-scope' and contains(.,'Create order')]");
-
-    //I.waitInUrl("/cart/thanks/");
-
-
-    //-------------------------------------------------------------------------------------------------------------------
-
-
-
+    I.waitForElement(productListPage.productList.order, 20);
+    var order = await I.grabTextFrom(productListPage.productList.order);
+    var number = order.replace('ORDER ', '');
+    I.waitInUrl("/cart/thanks/" + number);
 });
