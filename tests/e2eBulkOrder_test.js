@@ -23,7 +23,6 @@ Scenario('[Positive] Create', async (I, siteNavigation, bulkOrder) => {
 
     I.scrollPageToBottom();
     await I.click(bulkOrder.addToCartButton);
-
-    I.waitForValue(bulkOrder.shoppingCart.products.first, secondProductQuantity);
-    I.waitForValue(bulkOrder.shoppingCart.products.second, firstProductQuantity);
+    I.waitForValue(bulkOrder.shoppingCart.products.first, secondProductQuantity, 10);
+    I.waitForValue(bulkOrder.shoppingCart.products.second, firstProductQuantity, 10);
 });
