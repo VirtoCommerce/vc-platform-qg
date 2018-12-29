@@ -4,7 +4,7 @@ Feature('Multi currency multi language');
 
 Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
     I.amOnPage('');
-    await I.moveCursorTo(storeOptions.selector);
+    await I.moveCursorTo(storeOptions.storeSelector);
     await I.moveCursorTo(storeOptions.language);
     await I.click(storeOptions.deutsch);
     await I.click(storeOptions.firstProduct);
@@ -21,7 +21,7 @@ Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
     assert.equal(displaySizeDE, storeOptions.productDetails.displaySizeDE);
     assert.equal(weAlsoRecommendDE, storeOptions.productDetails.weAlsoRecommendDE);
     assert.ok(comparePriceDE.indexOf(storeOptions.productDetails.comparePriceDE) > -1);
-    
+
     await I.moveCursorTo(storeOptions.selector);
     await I.moveCursorTo(storeOptions.currency.selector);
     await I.click(storeOptions.currency.eur.selector);
