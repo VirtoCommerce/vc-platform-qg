@@ -3,7 +3,7 @@
 Feature('New subscription');
 
 Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) => {
-    I.amOnPage('');
+    I.amOnPage(I.sites.storefront);
     I.signIn();
     
     I.click(newSubscription.product);

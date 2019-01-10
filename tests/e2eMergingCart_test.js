@@ -3,7 +3,7 @@
 Feature('Merging Cart');
 
 Before((I, mergingCart, modalDialogFragment) => {
-    I.amOnPage('');
+    I.amOnPage(I.sites.storefront);
 
     I.scrollPageToBottom();
     I.click(mergingCart.firstProductAddToCartButton);

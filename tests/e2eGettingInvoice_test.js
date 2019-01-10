@@ -1,7 +1,7 @@
 Feature("Getting Invoice");
 
 Before(I => {
-    I.amOnPage("");
+    I.amOnPage(I.sites.storefront);
     I.signIn();
 });
 

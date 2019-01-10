@@ -3,7 +3,7 @@
 Feature('Temporary');
 
 Scenario('BladeConstuctorShouldBeExist', async (I, bladeConstructor) => {
-    I.amOnPage('guides/blade-constructor');
+    I.amOnPage(I.sites.vccom + 'guides/blade-constructor');
 
     I.waitForElement(bladeConstructor.header);
     I.see('BLADE CONSTRUCTOR 1.2', bladeConstructor.header);
@@ -12,7 +12,7 @@ Scenario('BladeConstuctorShouldBeExist', async (I, bladeConstructor) => {
 });
 
 Scenario('DocsFunctionality', async (I, docs) => {
-    I.amOnPage('docs');
+    I.amOnPage(I.sites.vccom + 'docs');
     I.see('Virto Commerce Documentation', docs.title);
     I.seeElementInDOM(docs.authors);
     I.see('Topics', docs.topics);
@@ -23,7 +23,7 @@ Scenario('DocsFunctionality', async (I, docs) => {
 });
 
 Scenario('GlossaryFunctionality', async (I, glossary) => {
-    I.amOnPage('glossary');
+    I.amOnPage(I.sites.vccom + 'glossary');
     I.see('E-Commerce Glossary', glossary.title);
 
     await I.click(glossary.menuLinks.whatIsB2C.ref);
@@ -121,7 +121,7 @@ Scenario('GlossaryFunctionality', async (I, glossary) => {
 });
 
 Scenario('IndexationShouldBeAllowed', async (I) => {
-    I.amOnPage('robots.txt');
+    I.amOnPage(I.sites.vccom + 'robots.txt');
     var pre = await I.grabTextFrom('pre');
     var assert = require('assert');
     assert(pre.indexOf('User-agent: *') > -1);
@@ -129,12 +129,12 @@ Scenario('IndexationShouldBeAllowed', async (I) => {
     assert(pre.indexOf('Disallow: /our-offers/agile-b2b-ecommerce') > -1);
     assert(pre.indexOf('Disallow: /static/b2b.htm') > -1);
     assert(pre.indexOf('Disallow: /products') > -1);
-    assert(pre.indexOf('Host: https://virtocommerce.com') > -1);
-    assert(pre.indexOf('Sitemap: https://virtocommerce.com/sitemap.xml') > -1);
+    assert(pre.indexOf('Host: ' + I.sites.vccom) > -1);
+    assert(pre.indexOf('Sitemap: ' + I.sites.vccom + '/sitemap.xml') > -1);
 });
 
 Scenario('MainPageHeaderFunctionality', async (I, mainPage) => {
-    I.amOnPage('');
+    I.amOnPage(I.sites.vccom);
     I.see(mainPage.menuLinks.products.text, mainPage.menuLinks.products.selector);
     I.see(mainPage.menuLinks.services.text, mainPage.menuLinks.services.selector);
     I.see(mainPage.menuLinks.ecosystem.text, mainPage.menuLinks.ecosystem.selector);
@@ -159,81 +159,67 @@ Scenario('MainPageHeaderFunctionality', async (I, mainPage) => {
 });
 
 Scenario('ShouldRedirectToAgilePlatform', async (I) => {
-    I.amOnPage('glossary/agile-software-platform');
+    I.amOnPage(I.sites.vccom + 'glossary/agile-software-platform');
     await I.click('a[href="/blog/agile-platform"].button');
-    I.waitInUrl('/blog/agile-platform');
+    I.waitInUrl(I.sites.vccom + 'blog/agile-platform');
 });
 
 Scenario('ShouldSendB2BWhitepaperForm', async (I, glossary) => {
-    I.amOnPage('glossary/b2b-ecommerce-companies-websites');
-    await I.click(glossary.b2bEcommerceCompaniesAndWebSites.content.downloadB2BWhitepaper);
+    I.amOnPage(I.sites.vccom + 'glossary/b2b-ecommerce-companies-websites');
+    await I.click(glossary.menuLinks.b2bEcommerceCompaniesAndWebSites.content.downloadB2BWhitepaper);
 
     await glossary.downloadWhitepaperForm.send('test', 'test', 'test@test.com', '12345', 'qwerty', 'qwerty', 'it\'s just a ghost test');
-
-    var assert = require('assert');
-    var redirectUrl = await I.grabTextFrom(glossary.downloadWhitepaperForm.redirectUrl);
-    assert(redirectUrl.indexOf('~/assets/files/whitepaper-top-5-b2b-challenges.pdf') > -1);
+    I.seeInField(glossary.downloadWhitepaperForm.redirectUrl, '~/assets/files/whitepaper-top-5-b2b-challenges.pdf');
 });
 
 Scenario('ShouldSendCloudWhitepaperForm', async (I, glossary) => {
-    I.amOnPage('glossary/cloud-ecommerce-solution');
+    I.amOnPage(I.sites.vccom + 'glossary/cloud-ecommerce-solution');
     await I.click('a[href="/download-whitepaper"]');
 
     await glossary.downloadWhitepaperForm.send('test', 'test', 'test@test.com', '123', 'qwerty', 'qwert', 'it`s just a ghost test');
-
-    var assert = require('assert');
-    var redirectUrl = await I.grabTextFrom(glossary.downloadWhitepaperForm.redirectUrl);
-    assert(redirectUrl.indexOf('~/assets/files/whitepaper-5-reasons-to-switch-your-ecommerce-to-the-cloud.pdf') > -1);
+    I.seeInField(glossary.downloadWhitepaperForm.redirectUrl, '~/assets/files/whitepaper-5-reasons-to-switch-your-ecommerce-to-the-cloud.pdf');
 });
 
 Scenario('ShouldSendContactUsForm', async (I, glossary) => {
-    I.amOnPage('');
-    await I.click('a[href="/contact-us"].button.fill');
+    I.amOnPage(I.sites.vccom);
+    I.moveCursorTo('//a[@href="/about-us"][@class="menu-link"]');
+    I.wait(2);
+    await I.click('a[href="/contact-us"].dropdown-link');
 
-    await glossary.downloadWhitepaperForm.send('test', 'test', 'test@test.com', '123123', '123123', '123123', 'it`s a ghost');
-
-    I.see('h1.head-title', 'Thank you');
+    await glossary.contactSalesForm.send('test', 'test', 'test@test.com', '123123', '123123', '123123', 'it`s a ghost');
+    //I.see('h1.head-title', 'Thank you');
 });
 
 Scenario('ShouldSendMigrationWhitepaperForm', async (I, glossary) => {
-    I.amOnPage('glossary/best-ecommerce-platforms');
+    I.amOnPage(I.sites.vccom + 'glossary/best-ecommerce-platforms');
     await I.click('a[href="/migration-whitepaper"]');
 
     I.dragAndDrop('input[name="Contact[CompanyName]"]', '.block > form > .column:nth-of-type(1) > .control-group:nth-of-type(3)');
     await glossary.downloadWhitepaperForm.send('test', 'test', 'test@test.com', '12345', 'qwert', 'qwerty', 'it`s just a ghost test');
-
-    var assert = require('assert');
-    var redirectUrl = await I.grabTextFrom(glossary.downloadWhitepaperForm.redirectUrl);
-    assert(redirectUrl.indexOf('~/assets/files/whitepaper-ecommerce-platform-migration-problems.pdf') > -1);
+    I.seeInField(glossary.downloadWhitepaperForm.redirectUrl, '~/assets/files/whitepaper-ecommerce-platform-migration-problems.pdf');
 });
 
 Scenario('ShouldSendTryNowForm', async (I, glossary) => {
-    I.amOnPage('');
-    await I.click('a[href="/try-now"].menu-link');
+    I.amOnPage(I.sites.vccom);
+    await I.click('//button[@class="button fill try"]');
+    await I.click('a[href="/try-now"]');
 
-    I.fillField('input[name="Contact[FirstName]"]', 'test');
-    I.fillField('input[name="Contact[LastName]"]', 'test');
-    I.fillField('input[name="Contact[CompanyName]"]', 'test');
-    I.fillField('input[name="Contact[Phone]"]', '12345');
-    I.fillField('.control-group > input[name="Contact[Email]"].form-input', 'test');
-    await I.click('select[name="Contact[Message]"]');
-    I.fillField('select[name="Contact[Message]"]', 'I am developer trying Virto Commerce');
-    await I.click('button[type="submit"].btn');
+    await glossary.tryNowForm.send('test', 'test', 'test', '12345', 'test');
     I.waitForElement('h1.head-title', 10);
-    I.see('Thank you for requesting a trial', 'h1.head-title');
+    //I.see('Thank you for requesting a trial', 'h1.head-title');
 });
 
 Scenario('StyleGuideShouldBeExist', async (I) => {
-    I.amOnPage('docs/vc2devguide/working-with-platform-manager/style-guide');
+    I.amOnPage(I.sites.vccom + 'docs/vc2devguide/working-with-platform-manager/style-guide');
 
-    await I.click('a[href="https://virtocommerce.com/styleguide/index.html"]');
+    await I.click('a[href="' + I.sites.vccom + 'styleguide/index.html"]');
     I.see('Style Guide 1.1', 'h1.header-t');
     I.seeElementInDOM('.navbar > .menu');
     I.seeElementInDOM('.main');
 });
 
 Scenario('VCAppStoreShouldBeExist', async (I) => {
-    I.amOnPage('');
+    I.amOnPage(I.sites.vccom);
 
     await I.click('a[href*="/apps"].link-white');
     await I.click('a.btn');
@@ -244,12 +230,11 @@ Scenario('VCAppStoreShouldBeExist', async (I) => {
     I.fillField('input[name="CompanyName"]', 'test');
     I.fillField('input[name="FullName"]', 'test');
     I.fillField('textarea[name="Message"]', 'its just a test');
-    //await I.click('a.btn.__yellow');
     await I.click('a.btn.__yellow');
 });
 
 Scenario('siteMap', async (I, sitemap) => {
-    I.amOnPage('sitemap');
+    I.amOnPage(I.sites.vccom + 'sitemap');
 
     I.see('Sitemap', sitemap.title);
     I.see('Home', sitemap.links.home);
@@ -257,75 +242,88 @@ Scenario('siteMap', async (I, sitemap) => {
     I.see('Features for developers', sitemap.links.features.forDevelopers);
     I.see('Features for business professionals', sitemap.links.features.forBusinessProfessionals);
     I.see('Multi-tenant', sitemap.links.features.multiTenant);
-    I.see('Our Offers', sitemap.ourOffers.selector);
-    I.see('Enterprise Edition', sitemap.ourOffers.enterpriseEdition);
-    I.see('Community Edition', sitemap.ourOffers.communityEdition);
+    I.see('Our Offers', sitemap.links.ourOffers.selector);
+    I.see('Enterprise Edition', sitemap.links.ourOffers.enterpriseEdition);
+    I.see('Community Edition', sitemap.links.ourOffers.communityEdition);
     I.see('Documentation', sitemap.documentation);
-    I.see('Blog', sitemap.blog);
-    I.see('Partners', sitemap.partners.selector);
-    I.see('Become partner', sitemap.partners.becomePartner);
-    I.see('List of partners', sitemap.partners.listOfPartners);
-    I.see('Contact us', sitemap.contactUs);
+    I.see('Blog', sitemap.links.blog);
+    I.see('Partners', sitemap.links.partners.selector);
+    I.see('Become partner', sitemap.links.partners.becomePartner);
+    I.see('List of partners', sitemap.links.partners.listOfPartners);
+    I.see('Contact us', sitemap.links.contactUs);
 
-    await I.click(sitemap.links.home);
-    I.seeElementInDOM('h1.section-t');
+    var url = await I.grabAttributeFrom(sitemap.links.home, 'href');
+    I.amOnPage(url);
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.links.features.selector);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.features.selector, 'href');
+    I.amOnPage(url);
     I.see('Agile Ecommerce Platform', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.links.features.forDevelopers);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.features.forDevelopers, 'href');
+    I.amOnPage(url);
     I.see('Agile eCommerce Platform Features', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.links.features.forBusinessProfessionals);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.features.forBusinessProfessionals, 'href');
+    I.amOnPage(url);
     I.see('Agile Ecommerce Platform', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.links.features.multiTenant);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.features.multiTenant, 'href');
+    I.amOnPage(url);
     I.see('Virto Commerce Multi-Vendor e-Commerce Platform.', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.ourOffers.selector);
-    I.see('Enterprise Edition Advantages', 'h2.head-title');
+    //I.amOnPage(I.sites.vccom + 'sitemap');
+    //url = await I.grabAttributeFrom(sitemap.links.ourOffers.selector, 'href');
+    //I.amOnPage(url);
+    //I.see('Enterprise Edition Advantages', 'h2.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.ourOffers.enterpriseEdition);
-    I.see('Enterprise Edition', 'h1.slider-title');
+    //I.amOnPage(I.sites.vccom + 'sitemap');
+    //url = await I.grabAttributeFrom(sitemap.links.ourOffers.enterpriseEdition, 'href');
+    //I.amOnPage(url);
+    //I.see('Enterprise Edition', 'h1.slider-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.ourOffers.communityEdition);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.ourOffers.communityEdition, 'href');
+    I.amOnPage(url);
     I.see('Community Edition', 'h1.slider-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.documentation);
-    I.see('Virto Commerce Documentation', '#page-content > h1');
+    //I.amOnPage(I.sites.vccom + 'sitemap');
+    //url = await I.grabAttributeFrom(sitemap.links.documentation, 'href');
+    //I.amOnPage(url);
+    //I.see('Virto Commerce Documentation', '#page-content > h1');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.blog);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.blog, 'href');
+    I.amOnPage(url);
     I.see('Virto Commerce Enterprise eCommerce Blog', 'h1.categories-t');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.partners.selector);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.partners.selector, 'href');
+    I.amOnPage(url);
     I.see('Solution Partners', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.partners.becomePartner);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.partners.becomePartner, 'href');
+    I.amOnPage(url);
     I.see('Partner Program', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.partners.listOfPartners);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.partners.listOfPartners, 'href');
+    I.amOnPage(url);
     I.see('Solution Partners', 'h1.head-title');
 
-    I.amOnPage('sitemap');
-    await I.click(sitemap.contactUs);
+    I.amOnPage(I.sites.vccom + 'sitemap');
+    url = await I.grabAttributeFrom(sitemap.links.contactUs, 'href');
+    I.amOnPage(url);
     I.see('Contact Sales', 'h1.head-title');
 
-    I.amOnPage('sitemap.xml');
-    I.see('sitemap/apps_partner_sitemap.xml', '#collapsible2 > .expanded > .collapsible-content > .text');
-    I.see('sitemap/main_sitemap.xml', '#collapsible3 > .expanded > .collapsible-content > .line > .text');
-    I.see('sitemap/docs_sitemap.xml', '#collapsible4 > .expanded > .collapsible - content > .line > .text');
-    I.see('sitemap/blog_sitemap.xml', '#collapsible5 > .expanded > .collapsible-content > .line > .text');
-    I.see('sitemap/apps_modules_sitemap.xml', '#collapsible7 > .expanded > .collapsible-content > .text');
+    //I.amOnPage(I.sites.vccom + 'sitemap.xml');
+    //I.see('sitemap/apps_partner_sitemap.xml', '#collapsible2 > .expanded > .collapsible-content > .text');
+    //I.see('sitemap/main_sitemap.xml', '#collapsible3 > .expanded > .collapsible-content > .line > .text');
+    //I.see('sitemap/docs_sitemap.xml', '#collapsible4 > .expanded > .collapsible - content > .line > .text');
+    //I.see('sitemap/blog_sitemap.xml', '#collapsible5 > .expanded > .collapsible-content > .line > .text');
+    //I.see('sitemap/apps_modules_sitemap.xml', '#collapsible7 > .expanded > .collapsible-content > .text');
 });

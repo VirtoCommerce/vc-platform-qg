@@ -1,8 +1,8 @@
 Feature("Adding,changing and removing address");
 
 Before(I => {
-  I.amOnPage("");
-  I.signIn();
+    I.amOnPage(I.sites.storefront);
+    I.signIn();
 });
 
 Scenario("[Positive] Adding a new address", (I, createAddressPage) => {

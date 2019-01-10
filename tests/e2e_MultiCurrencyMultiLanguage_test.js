@@ -3,7 +3,7 @@
 Feature('Multi currency multi language');
 
 Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
-    I.amOnPage('');
+    I.amOnPage(I.sites.storefront);
     await I.moveCursorTo(storeOptions.storeSelector);
     await I.moveCursorTo(storeOptions.language);
     await I.click(storeOptions.deutsch);
