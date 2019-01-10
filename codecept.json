@@ -2,13 +2,18 @@
   "output": "./output",
   "helpers": {
     "Protractor": {
-      "url": "https://demo.virtocommerce.com/",
+      "url": "http://",
       "driver": "hosted",
       "browser": "chrome",
       "seleniumAddress": "http://localhost:4444/wd/hub",
       "angular": "true",
       "rootElement": "body",
-      "fullPageScreenshots": "true"
+      "fullPageScreenshots": "true",
+      "capabilities": {
+        "chromeOptions": {
+          "args": [ "--window-size=1600,1024" ]
+        }
+      }
     }
   },
   "include": {

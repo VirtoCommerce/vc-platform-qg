@@ -1,8 +1,8 @@
 Feature("Changing First Name and Last Name in Profile");
 
 Before(I => {
-  I.amOnPage("");
-  I.signIn();
+    I.amOnPage(I.sites.storefront);
+    I.signIn();
 });
 
 Scenario("[Positive] Changing First and Last Name in Profile", I => {

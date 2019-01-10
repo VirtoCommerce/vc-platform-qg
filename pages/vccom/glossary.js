@@ -134,7 +134,7 @@ module.exports = {
     },
     downloadWhitepaperForm: {
         firstName: 'input[name="Contact[FirstName]"]',
-        lastName: 'input[name="Contact[FirstName]"]',
+        lastName: 'input[name="Contact[LastName]"]',
         email: '.control-group > input[name="Contact[Email]"].form-input',
         phone: 'input[name="Contact[Phone]"]',
         companyName: 'input[name="Contact[CompanyName]"]',
@@ -146,15 +146,57 @@ module.exports = {
         submit: '.control-group > button[type="submit"].button.fill',
         redirectUrl: 'input[name="Contact[RedirectUrl]"][type="hidden"]',
         send: async function (firstName, lastName, email, phone, companyName, jobTitle, message) {
-            I.fillField(this.downloadWhitepaperForm.firstName, firstName);
-            I.fillField(this.downloadWhitepaperForm.lastName, lastName);
-            I.fillField(this.downloadWhitepaperForm.email, email);
-            I.fillField(this.downloadWhitepaperForm.phone, phone);
-            I.fillField(this.downloadWhitepaperForm.companyName, companyName);
-            I.fillField(this.downloadWhitepaperForm.jobTitle, jobTitle);
-            await I.click(this.downloadWhitepaperForm.softwareTypes.notSure);
-            I.fillField(this.downloadWhitepaperForm.message, message);
-            await I.click(this.downloadWhitepaperForm.submit);
+            I.fillField(this.firstName, firstName);
+            I.fillField(this.lastName, lastName);
+            I.fillField(this.email, email);
+            I.fillField(this.phone, phone);
+            I.fillField(this.companyName, companyName);
+            I.fillField(this.jobTitle, jobTitle);
+            await I.click(this.softwareTypes.notSure);
+            I.fillField(this.message, message);
+            await I.click(this.submit);
+        }
+    },
+    contactSalesForm: {
+        firstName: 'input[name="Contact[FirstName]"]',
+        lastName: 'input[name="Contact[LastName]"]',
+        email: '.control-group > input[name="Contact[Email]"].form-input',
+        phone: 'input[name="Contact[Phone]"]',
+        companyName: 'input[name="Contact[CompanyName]"]',
+        jobTitle: 'input[name="Contact[JobTitle]"]',
+        message: 'textarea[name="Contact[Message]"]',
+        submit: '.control-group > button[type="submit"].button.fill',
+        send: async function (firstName, lastName, email, phone, companyName, jobTitle, message) {
+            I.fillField(this.firstName, firstName);
+            I.fillField(this.lastName, lastName);
+            I.fillField(this.email, email);
+            I.fillField(this.phone, phone);
+            I.fillField(this.companyName, companyName);
+            I.fillField(this.jobTitle, jobTitle);
+            I.fillField(this.message, message);
+            await I.click(this.submit);
+        }
+    },
+    tryNowForm: {
+        firstName: 'input[name="Contact[FirstName]"]',
+        lastName: 'input[name="Contact[LastName]"]',
+        companyName: 'input[name="Contact[CompanyName]"]',
+        phone: 'input[name="Contact[Phone]"]',
+        email: '.control-group > input[name="Contact[Email]"].form-input',
+        message: 'select[name="Contact[Message]"]',
+        messages: {
+            iAmDeveloper: '//select[@name="Contact[Message]"]/option[text()="I am developer trying Virto Commerce"]'
+        },
+        submit: 'button[type="submit"].btn',
+        send: async function (firstName, lastName, companyName, phone, email) {
+            I.fillField(this.firstName, firstName);
+            I.fillField(this.lastName, lastName);
+            I.fillField(this.companyName, companyName);
+            I.fillField(this.phone, phone);
+            I.fillField(this.email, email);
+            await I.click(this.message);
+            await I.click(this.messages.iAmDeveloper);
+            await I.click(this.submit);
         }
     }
 };
