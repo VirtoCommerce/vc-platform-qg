@@ -14,7 +14,7 @@ Scenario(
         .withText("Change password")
         .inside(locate("li"))
     );
-    I.fillField("#oldPassword", "store");
+    I.fillField("#oldPassword", I.credentials.password);
     I.fillField("#newPassword", "ss");
     I.fillField("#newPassword2", "ss");
     I.click(locate("button").withText("Change password"));
@@ -31,7 +31,7 @@ Scenario(
         .withText("Change password")
         .inside(locate("li"))
     );
-    I.fillField("#oldPassword", "store");
+    I.fillField("#oldPassword", I.credentials.password);
     I.fillField("#newPassword", "qwerty1234");
     I.fillField("#newPassword2", "qwerty1234");
     I.click(locate("button").withText("Change password"));
