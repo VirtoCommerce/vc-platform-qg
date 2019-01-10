@@ -5,7 +5,7 @@ Before(I => {
     I.signIn();
 });
 
-Scenario("[Positive] as user i can get invoice for an order", I => {
+Scenario("[Positive] as user i can get invoice for an order", async (I) => {
     I.click({ binding: "customer.firstName || customer.userName" });
     I.click(
         locate("a")
