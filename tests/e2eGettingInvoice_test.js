@@ -11,8 +11,9 @@ Scenario("[Positive] as user i can get invoice for an order", I => {
         locate("a")
             .withText("Orders")
             .inside(locate("li")));
-    I.click('(//a[@ng-bind="order.number"])[1]');
+    var order = await I.grabTextFrom('//table/tbody/tr[1]/td[1]/a');
+    I.click('//table/tbody/tr[1]/td[1]/a');
     I.click(locate("button").withText("Get invoice"));
     I.switchToNextTab();
-    I.waitInUrl("/CU1508131823005/invoice");
+    I.waitInUrl("/" + order + "/invoice");
 });
