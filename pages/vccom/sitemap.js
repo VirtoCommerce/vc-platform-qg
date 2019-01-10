@@ -3,11 +3,11 @@ const I = actor();
 module.exports = {
     title: 'h1.head-title',
     links: {
-        home: '.list > li:nth-of-type(1) > a[href="/"]',
+        home: 'a[href="/"]',
         features: {
-            selector: '.sitemap > .list > li:nth-of-type(2) > a[href="/features/for-business-professionals"]',
-            forDevelopers: '.list > li:nth-of-type(1) > a[href="/features/for-developers"]',
-            forBusinessProfessionals: '.list > li:nth-of-type(2) > .list > li:nth-of-type(2) > a[href="/features/for-business-professionals"]',
+            selector: 'a[href="/features/for-business-professionals"]',
+            forDevelopers: 'a[href="/features/for-developers"]',
+            forBusinessProfessionals: 'a[href="/features/for-business-professionals"]',
             multiTenant: 'a[href="/features/multi-tenant"]'
         },
         ourOffers: {

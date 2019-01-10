@@ -3,6 +3,11 @@
 module.exports = function () {
     return actor({
 
+        sites: {
+            storefront: 'demo.virtocommerce.com',
+            vccom: 'vccom.com/'
+        },
+
         credentials: {
             user: 'test_user@mail.com',
             password: 'aA111111'
