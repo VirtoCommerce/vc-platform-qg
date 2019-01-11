@@ -2,7 +2,7 @@
   "output": "./output",
   "helpers": {
     "Protractor": {
-      "url": "http://",
+      "url": "http://demo.virtocommerce.com",
       "driver": "hosted",
       "browser": "chrome",
       "seleniumAddress": "http://localhost:4444/wd/hub",

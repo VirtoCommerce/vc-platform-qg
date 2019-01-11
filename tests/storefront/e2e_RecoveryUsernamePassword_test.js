@@ -3,7 +3,7 @@
 Feature('Recovery username/password');
 
 Scenario('[Positive] Recovery username', async (I, recovery) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
 
     await I.click(I.loginForm.signInLink);
     I.waitForElement(recovery.forgotLoginLink);
@@ -14,7 +14,7 @@ Scenario('[Positive] Recovery username', async (I, recovery) => {
 });
 
 Scenario('[Positive] Recovery password', async (I, recovery) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
 
     await I.click(I.loginForm.signInLink);
     I.waitForElement(recovery.forgotPasswordLink);
