@@ -3,7 +3,7 @@
 Feature('Blogs');
 
 Scenario('[Positive] Reading news', async (I, blogs) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
 
     I.waitForElement(blogs.inset, 10);
     I.click(blogs.inset);

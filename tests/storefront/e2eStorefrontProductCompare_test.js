@@ -3,7 +3,7 @@
 Feature('Storefront Product Compare');
 
 Scenario('[Positive] Compare two products', async (I, productCompare, modalDialogFragment) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     
     I.click(productCompare.firstProduct);
     I.waitForClickable(productCompare.addToCompareListButton);

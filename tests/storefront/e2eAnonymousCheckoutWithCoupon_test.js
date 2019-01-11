@@ -3,7 +3,7 @@
 Feature('Anonymous checkout with coupon');
 
 Scenario('[Positive] as anonymous user I be able to do checkout with coupon', async (I, navigationPage, productListPage, modalDialogFragment, cartItemCountFragment, shippingAdressFragment, orderSummaryFragment) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
 
     await I.click(navigationPage.accessibleNav.cellPhones);
     I.waitInUrl('/cell-phones');

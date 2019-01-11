@@ -3,7 +3,7 @@
 Feature('Bulk order creation');
 
 Scenario('[Positive] Create', async (I, siteNavigation, bulkOrder) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('';
     var moreMenuExistsOnPage = await I.executeScript(() => document.getElementById('moreMenu') != null);
     if (moreMenuExistsOnPage) {
         I.moveCursorTo(siteNavigation.moreMenu.selector);

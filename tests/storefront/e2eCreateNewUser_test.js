@@ -3,7 +3,7 @@
 Feature('Create new user');
 
 Scenario('[Positive] as user I be able to create new account (Alex.Zol)', (I, createAccountPage, headerPage) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.click(headerPage.headerNav.createAnAccount);
     I.waitInUrl(createAccountPage.URLs.account.register);
     createAccountPage.sendNewUserForm();
@@ -17,7 +17,7 @@ Scenario('[Positive] as user I be able to create new account (Alex.Zol)', (I, cr
 });
 
 Scenario('[Negative] as user I be able to create account (Alex.Zol) one more time', (I, createAccountPage, headerPage) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.click(headerPage.headerNav.createAnAccount);
     I.waitInUrl(createAccountPage.URLs.account.register);
     createAccountPage.sendNewUserForm();
