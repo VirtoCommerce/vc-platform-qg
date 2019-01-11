@@ -1,7 +1,7 @@
 Feature("Changing password");
 
 Before(I => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.signIn();
 });
 

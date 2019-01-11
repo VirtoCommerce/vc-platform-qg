@@ -1,7 +1,7 @@
 Feature("Adding,changing and removing address");
 
 Before(I => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.signIn();
 });
 

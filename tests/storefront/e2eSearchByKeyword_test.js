@@ -3,7 +3,7 @@
 Feature('Search By Keyword');
 
 Scenario('[Positive] Search category and product by criteria', async (I, search) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.fillField(search.criteria, 'sony');
     I.seeElementInDOM(search.results);
 

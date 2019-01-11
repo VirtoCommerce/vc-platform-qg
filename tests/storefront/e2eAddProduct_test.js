@@ -3,7 +3,7 @@
 Feature('As logged user I should be able add product to the wish list');
 
 Before((I) => {
-    I.amOnPage(I.sites.storefront);
+    I.amOnPage('');
     I.signIn();
 });
 
