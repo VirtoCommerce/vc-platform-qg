@@ -2,46 +2,56 @@
   "output": "./output",
   "helpers": {
     "Protractor": {
-      "url": "http://demo.virtocommerce.com",
+      "url": "https://demo.virtocommerce.com/",
       "driver": "hosted",
       "browser": "chrome",
       "seleniumAddress": "http://localhost:4444/wd/hub",
       "angular": "true",
       "rootElement": "body",
-      "fullPageScreenshots": "true",
-      "capabilities": {
-        "chromeOptions": {
-          "args": [ "--window-size=1600,1024" ]
+      "fullPageScreenshots": "true"
+    },
+    "REST": {
+      "endpoint": "http://demo.virtocommerce.com/admin/api",
+      "defaultHeaders": {
+        "auth": "a348fa7508d342f6a32f8bf6c6681a2a"
+      }
+    },
+    "ApiDataFactory": {
+      "endpoint": "http://demo.virtocommerce.com/admin/api",
+      "cleanup": true,
+      "headers": {
+        "user-key": "a348fa7508d342f6a32f8bf6c6681a2a",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "factories": {
+        "user": {
+          "factory": "./factories/users",
+          "create": { "user": "/platform/security/users/create" },
+          "delete": { "user": "/platform/security/users" }
         }
       }
     }
   },
   "include": {
     "I": "./steps_file.js",
-    "createAccountPage": "./pages/storefront/createAccount.js",
-    "navigationPage": "./pages/storefront/navigation.js",
-    "headerPage": "./pages/storefront/header.js",
-    "productListPage": "./pages/storefront/productList.js",
-    "addProduct": "./pages/storefront/addProduct.js",
-    "mergingCart": "./pages/storefront/mergingCart.js",
+    "createAccountPage": "./pages/createAccount.js",
+    "navigationPage": "./pages/navigation.js",
+    "headerPage": "./pages/header.js",
+    "productListPage": "./pages/productList.js",
+    "addProduct": "./pages/addProduct.js",
+    "mergingCart": "./pages/mergingCart.js",
     "modalDialogFragment": "./fragments/modalDialog.js",
     "cartItemCountFragment": "./fragments/cartItemCount.js",
     "shippingAdressFragment": "./fragments/shippingAdress.js",
     "orderSummaryFragment": "./fragments/orderSummary.js",
-    "siteNavigation": "./fragments/siteNavigation.js",
-    "search": "./pages/storefront/search.js",
-    "productCompare": "./pages/storefront/productCompare.js",
-    "storeOptions": "./pages/storefront/storeOptions.js",
-    "newSubscription": "./pages/storefront/newSubscription.js",
-    "bulkOrder": "./pages/storefront/bulkOrder.js",
-    "blogs": "./pages/storefront/blogs.js",
-    "recovery": "./pages/storefront/recovery.js",
-    "createAddressPage": "./pages/storefront/createAddress.js",
-    "glossary": "./pages/vccom/glossary.js",
-    "bladeConstructor": "./pages/vccom/bladeConstructor.js",
-    "docs": "./pages/vccom/docs.js",
-    "mainPage": "./pages/vccom/mainPage.js",
-    "sitemap": "./pages/vccom/sitemap.js"
+    "search": "./pages/search.js",
+    "productCompare": "./pages/productCompare.js",
+    "storeOptions": "./pages/storeOptions.js",
+    "newSubscription": "./pages/newSubscription.js",
+    "bulkOrder": "./pages/bulkOrder.js",
+    "blogs": "./pages/blogs.js",
+    "createAddressPage": "./pages/createAddress.js"
   },
   "mocha": {},
   "bootstrap": false,
@@ -56,8 +66,7 @@
       "enabled": true
     }
   },
-  "tests": "./tests/storefront/*_test.js",
+  "tests": "./tests/*_test.js",
   "timeout": 10000,
-  "name": "QualityGate",
-  "scriptsTimeout": 40000
+  "name": "QualityGate"
 }
