@@ -1,18 +1,15 @@
 {
   "output": "./output",
   "helpers": {
-    "Protractor": {
+    "WebDriverIO": {
       "url": "http://demo.virtocommerce.com",
-      "driver": "hosted",
+      "smartWait": 15000,
       "browser": "chrome",
-      "seleniumAddress": "http://localhost:4444/wd/hub",
-      "angular": "true",
-      "rootElement": "body",
-      "fullPageScreenshots": "true",
-      "capabilities": {
-        "chromeOptions": {
-          "args": [ "--window-size=1600,1024" ]
-        }
+      "restart": false,
+      "windowSize": "maximize",
+      "timeouts": {
+        "script": 40000,
+        "page load": 30000
       }
     }
   },
@@ -57,7 +54,5 @@
     }
   },
   "tests": "./tests/storefront/*_test.js",
-  "timeout": 10000,
-  "name": "QualityGate",
-  "scriptsTimeout": 40000
+  "name": "QualityGate"
 }
