@@ -6,16 +6,16 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     I.amOnPage('');
     I.signIn();
     
-    I.click(newSubscription.product);
+    await I.click(newSubscription.product);
     I.scrollPageToBottom();
-    I.click(newSubscription.addToCartButton);
+    await I.click(newSubscription.addToCartButton);
 
     I.waitForClickable(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton, 15);
-    I.click(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton);
+    await I.click(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton);
     
     I.seeElementInDOM(newSubscription.shoppingCart.item);
     I.scrollPageToBottom();
-    I.click(newSubscription.shoppingCart.checkOutButton);
+    await I.click(newSubscription.shoppingCart.checkOutButton);
 
     var c = newSubscription.customer;
     I.fillField(c.email, I.customerInfo.email);
@@ -24,16 +24,16 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     I.fillField(c.company, I.customerInfo.company);
     I.fillField(c.address, I.customerInfo.address);
     I.fillField(c.city, I.customerInfo.city);
-    I.click(c.country);
-    I.click(c.region);
+    await I.click(c.country);
+    await I.click(c.region);
     I.fillField(c.postalCode, I.customerInfo.postalCode);
-    
-    I.click(c.iWantThisToBeRecurringOrder);
 
-    await I.waitForElement(c.autoReorderType.everyDay, 10);
-    I.click(c.autoReorderType.everyDay);
+    I.waitForElement(c.iWantThisToBeRecurringOrder, 10);
+    await I.click(c.iWantThisToBeRecurringOrder);
+
+    I.waitForElement(c.autoReorderType.everyDay, 10);
+    await I.click(c.autoReorderType.everyDay);
     I.scrollPageToBottom();
-    var info = await I.grabTextFrom(newSubscription.subscriptionInfo);
     await I.waitForClickable(c.shippingMethodButton, 15);
     await I.click(c.shippingMethodButton);
 
@@ -42,9 +42,9 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     await I.click(newSubscription.paymentMethodButton);
     
     await I.waitForClickable(newSubscription.createOrderButton, 15);
-    I.click(newSubscription.createOrderButton);
+    await I.click(newSubscription.createOrderButton);
 
-    I.click(newSubscription.myAccountInsets.subscriptions);
+    await I.click(newSubscription.myAccountInsets.subscriptions);
     await I.waitForElement(newSubscription.subscriptionsList);
-    I.click(newSubscription.created);
+    await I.click(newSubscription.created);
 });

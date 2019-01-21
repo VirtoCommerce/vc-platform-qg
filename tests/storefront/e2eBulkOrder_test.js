@@ -12,17 +12,16 @@ Scenario('[Positive] Create', async (I, siteNavigation, bulkOrder) => {
     } else {
         await I.click(siteNavigation.insets.bulkOrder);
     }
+    
+    I.fillField(bulkOrder.firstProduct.skuInput, bulkOrder.firstProduct.sku);
+    I.fillField(bulkOrder.firstProduct.quantityInput, bulkOrder.firstProduct.quantity);
 
-    var firstProductQuantity = '2';
-    var secondProductQuantity = '4';
-    I.fillField(bulkOrder.firstProduct.SKU, '3DRSOLO');
-    I.fillField(bulkOrder.firstProduct.quantity, firstProductQuantity);
-
-    I.fillField(bulkOrder.secondProduct.SKU, 'DJS900SWOCWK');
-    I.fillField(bulkOrder.secondProduct.quantity, secondProductQuantity);
+    I.fillField(bulkOrder.secondProduct.skuInput, bulkOrder.secondProduct.sku);
+    I.fillField(bulkOrder.secondProduct.quantityInput, bulkOrder.secondProduct.quantity);
 
     I.scrollPageToBottom();
     await I.click(bulkOrder.addToCartButton);
-    I.waitForValue(bulkOrder.shoppingCart.products.first, secondProductQuantity, 10);
-    I.waitForValue(bulkOrder.shoppingCart.products.second, firstProductQuantity, 10);
+
+    bulkOrder.shoppingCart.checkProductQuantity(bulkOrder.firstProduct.sku, bulkOrder.firstProduct.quantity);
+    bulkOrder.shoppingCart.checkProductQuantity(bulkOrder.secondProduct.sku, bulkOrder.secondProduct.quantity);
 });
