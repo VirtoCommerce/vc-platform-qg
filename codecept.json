@@ -1,15 +1,15 @@
 {
   "output": "./output",
   "helpers": {
-    "WebDriverIO": {
+    "WebDriver": {
       "url": "http://demo.virtocommerce.com",
-      "smartWait": 15000,
       "browser": "chrome",
-      "restart": false,
+      "smartWait": 15000,
+      "waitForTimeout": 30000,
       "windowSize": "maximize",
       "timeouts": {
-        "script": 40000,
-        "page load": 30000
+        "script": 60000,
+        "pageLoad": 20000
       }
     }
   },
