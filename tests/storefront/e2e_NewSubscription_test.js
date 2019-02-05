@@ -16,6 +16,7 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     //I.waitForEnabled(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton, 15);
     await I.click(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton);
 
+    I.wait(15);
     I.seeElementInDOM(newSubscription.shoppingCart.item);
     I.scrollPageToBottom();
     await I.click(newSubscription.shoppingCart.checkOutButton);
