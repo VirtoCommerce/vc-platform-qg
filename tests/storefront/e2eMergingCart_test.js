@@ -9,6 +9,7 @@ Before((I, mergingCart, modalDialogFragment) => {
     I.click(mergingCart.firstProductAddToCartButton);
     I.click(modalDialogFragment.modalDialog.productIsAddedToCart.goToCartButton);
 
+    I.wait(15);
     I.seeElement(mergingCart.shoppingCartTitle);
     I.seeElement(mergingCart.cartItem);
 
@@ -16,8 +17,10 @@ Before((I, mergingCart, modalDialogFragment) => {
 });
 
 Scenario('[Positive] First step', async (I, mergingCart) => {
-    I.waitForVisible(mergingCart.cartButton);
+    I.wait(15);
+    //I.waitForVisible(mergingCart.cartButton);
     I.click(mergingCart.cartButton);
+    I.wait(15);
     I.seeElementInDOM(mergingCart.authorizedUserMark);
     I.seeElement(mergingCart.cartItem);
 });
