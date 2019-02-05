@@ -24,6 +24,7 @@ Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
 
     await I.moveCursorTo(storeOptions.storeSelector);
     await I.moveCursorTo(storeOptions.currency.selector);
+    I.wait(15);
     await I.click(storeOptions.currency.eur.selector);
     await I.click(storeOptions.firstProduct);
 
