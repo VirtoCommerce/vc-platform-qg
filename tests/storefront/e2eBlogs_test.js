@@ -1,4 +1,4 @@
-/// <reference path="../steps.d.ts" />
+/// <reference path="../../steps.d.ts" />
 
 Feature('Blogs');
 

@@ -2,7 +2,7 @@ exports.config = {
 	"output": "./output",
     "helpers": {
         "WebDriver": {
-            "url": "http://localhost:2082/",
+            "url": "https://demo.virtocommerce.com/",
             "browser": "chrome",
             "smartWait": 15000,
             "waitForTimeout": 30000,
