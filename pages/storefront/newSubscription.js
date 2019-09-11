@@ -1,7 +1,7 @@
 const I = actor();
 
 module.exports = {
-    product: '//*[@id="electronics"]/main/div[5]/div[5]/a',
+    product: '//*[@id="electronics"]/main/div[5]/div[4]/a',
     addToCartButton: '//button[@id="addToCart"]',
     shoppingCart: {
         item: '//form[@name="formCart"]/div[contains(@class, "cart-row")][contains(@ng-repeat, "lineItem")]',

@@ -55,9 +55,11 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     I.click(c.shippingMethodButton);
 
     I.waitForElement(newSubscription.shippingMethods.fixedRateGround, 10);
+    I.wait(5);
     I.click(newSubscription.shippingMethods.fixedRateGround);
 
     I.waitForEnabled(newSubscription.paymentMethodButton, 10);
+    I.wait(5);
     I.click(newSubscription.paymentMethodButton);
 
     I.wait(5);
@@ -67,6 +69,6 @@ Scenario('[Positive] Create', async (I, newSubscription, modalDialogFragment) =>
     I.waitForElement(newSubscription.myAccountInsets.subscriptions, 10);
     I.click(newSubscription.myAccountInsets.subscriptions);
 
-    I.waitForElement(newSubscription.subscriptionsList, 10);
+    I.waitForElement(newSubscription.subscriptionsList, 15);
     I.click(newSubscription.created);
 });
