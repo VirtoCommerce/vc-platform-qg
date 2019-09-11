@@ -15,6 +15,7 @@ exports.config = {
 	},
 	"include": {
         "I": "./steps_file.js",
+        "accountPage" : "./pages/storefront/account.js",
         "createAccountPage": "./pages/storefront/createAccount.js",
         "navigationPage": "./pages/storefront/navigation.js",
         "headerPage": "./pages/storefront/header.js",
