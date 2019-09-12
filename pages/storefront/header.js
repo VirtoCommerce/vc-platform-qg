@@ -2,10 +2,11 @@
 const I = actor();
 
 module.exports = {
-
-  // insert your locators and methods here
-    headerNav:
-        {
+    headerNav:{
             createAnAccount:"//a[text()='Create an Account']"
-        }
-}
+    },
+    enUS_account: {
+        openAccount: "//a[@href='/en-US/account']",
+        logout: "//a[@id='customer_logout_link']"
+    }
+};
