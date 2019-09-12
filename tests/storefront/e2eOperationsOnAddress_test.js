@@ -5,79 +5,71 @@ Before(I => {
     I.signIn();
 });
 
-Scenario("[Positive] Adding a new address", (I, createAddressPage) => {
-  I.click({ binding: "customer.firstName || customer.userName" });
-  I.click(
-    locate("a")
-      .withText("Addresses")
-      .inside(locate("li"))
-  );
-  I.click(locate("button").withText("Add new Address"));
-  createAddressPage.sendNewAddressForm(
-    "Ivan",
-    "Petrov",
-    "Company_name",
-    "Street_name",
-    "3",
-    "Town_name",
-    "Canada",
-    "Alberta",
-    "3232"
-  );
-  I.see(
-    "Ivan Petrov, Company_name, Canada, Alberta, Town_name Street_name, 33232",
-    { repeater: "item in $ctrl.addresses" }
-  );
+Scenario("[Positive] Adding a new address", (I, headerPage, accountPage) => {
+    I.seeInCurrentUrl("/en-US");
+    //open account page
+    I.waitForEnabled(headerPage.enUS_account.openAccount, 10);
+    I.click(headerPage.enUS_account.openAccount);
+    //open address
+    I.waitForEnabled(accountPage.links.address, 10);
+    I.click(accountPage.links.address);
+
+    const address = I.addresses.address1;
+
+    I.waitForEnabled(accountPage.addressForm.addNewAddressButton, 10);
+    I.click(accountPage.addressForm.addNewAddressButton);
+    I.waitForEnabled(accountPage.addressForm.firstName, 10);
+    //enter data
+    accountPage.createNewAddress(
+        address.firstName,
+        address.lastName,
+        address.company,
+        address.addressLine1,
+        address.addressLine2,
+        address.city,
+        address.country,
+        address.region,
+        address.zip);
+
+    I.waitForElement(accountPage.addressForm.addressesList, 10);
+    I.seeElement(accountPage.addressForm.addressItem1);
+    I.seeElement(accountPage.addressForm.item1addressTextBeforeEdit);
 });
 
-Scenario("[Positive] Changing an existing address", (I, createAddressPage) => {
-  I.click({ binding: "customer.firstName || customer.userName" });
-  I.click(
-    locate("a")
-      .withText("Addresses")
-      .inside(locate("li"))
-  );
-  I.click(
-    locate("a")
-      .withText("Edit")
-      .inside(
-        locate("li")
-          .withChild("div")
-          .withText(
-            "Ivan Petrov, Company_name, Canada, Alberta, Town_name Street_name, 33232"
-          )
-      )
-  );
-  I.fillField(createAddressPage.addressForm.firstName, "Alexander");
-  I.fillField(createAddressPage.addressForm.city, "Town_name2");
-  I.click(locate("button").withText("Update Address"));
-  I.see(
-    "Alexander Petrov, Company_name, Canada, Alberta, Town_name2 Street_name, 33232",
-    { repeater: "item in $ctrl.addresses" }
-  );
+Scenario("[Positive] Changing an existing address", (I, headerPage, accountPage) => {
+    I.seeInCurrentUrl("/en-US");
+    //open account page
+    I.waitForEnabled(headerPage.enUS_account.openAccount, 10);
+    I.click(headerPage.enUS_account.openAccount);
+    //open address
+    I.waitForEnabled(accountPage.links.address, 10);
+    I.click(accountPage.links.address);
+    //click on edit
+    I.waitForEnabled(accountPage.addressForm.item1EditLink, 10);
+    I.click(accountPage.addressForm.item1EditLink);
+    I.waitForEnabled(accountPage.addressForm.firstName, 10);
+
+    const address = I.addresses.address2;
+    accountPage.updateAddress(
+        address.firstName,
+        address.country);
+    I.click(accountPage.addressForm.updateLink);
+    //check that address changed
+    I.waitForElement(accountPage.addressForm.addressesList, 10);
+    I.seeElement(accountPage.addressForm.item1addressTextAfterEdit);
 });
 
-Scenario("[Positive] Removing an existing address", I => {
-  I.click({ binding: "customer.firstName || customer.userName" });
-  I.click(
-    locate("a")
-      .withText("Addresses")
-      .inside(locate("li"))
-  );
-  I.click(
-    locate("a")
-      .withText("Delete")
-      .inside(
-        locate("li")
-          .withChild("div")
-          .withText(
-            "Alexander Petrov, Company_name, Canada, Alberta, Town_name2 Street_name, 33232"
-          )
-      )
-  );
-  I.acceptPopup();
-  I.dontSee(
-    "Alexander Petrov, Company_name, Canada, Alberta, Town_name2 Street_name, 33232",
-    { repeater: "item in $ctrl.addresses" }
-  );
+Scenario("[Positive] Removing an existing address", (I, accountPage, headerPage) => {
+    I.seeInCurrentUrl("/en-US");
+    //open account page
+    I.waitForEnabled(headerPage.enUS_account.openAccount, 10);
+    I.click(headerPage.enUS_account.openAccount);
+    //open address
+    I.waitForEnabled(accountPage.links.address, 10);
+    I.click(accountPage.links.address);
+    //click on delete
+    I.waitForEnabled(accountPage.addressForm.item1DeleteLink, 10);
+    I.click(accountPage.addressForm.item1DeleteLink);
+    I.acceptPopup();
+    I.dontSeeElement(accountPage.addressForm.item1addressTextAfterEdit);
 });
