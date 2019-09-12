@@ -32,7 +32,7 @@ module.exports = function () {
         },
 
         signIn: function () {
-            this.wait(15);
+            this.waitForElement(this.loginForm.signInLink, 5);
             this.click(this.loginForm.signInLink);
             within(this.loginForm.selector, () => {
                 this.fillField(this.loginForm.user, this.credentials.user);

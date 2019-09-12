@@ -1,10 +1,10 @@
 const I = actor();
 
 module.exports = {
-    product: '//*[@id="Electronics"]/main/div[4]/div[4]/a',
+    product: '//*[@id="electronics"]/main/div[5]/div[4]/a',
     addToCartButton: '//button[@id="addToCart"]',
     shoppingCart: {
-        item: '//form[@name="formCart"]/div[contains(@class, "cart-row")][contains(@ng-repeat, "cart")]',
+        item: '//form[@name="formCart"]/div[contains(@class, "cart-row")][contains(@ng-repeat, "lineItem")]',
         checkOutButton: '//button[@ng-click="submitCart()"]'
     },
     customer: {
