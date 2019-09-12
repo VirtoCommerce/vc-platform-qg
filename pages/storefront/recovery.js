@@ -5,5 +5,6 @@ module.exports = {
     forgotPasswordLink: '//a[contains(@href, "forgotpassword")]',
     email: '#recover-email',
     submit: '//input[@type="submit"][@value="Submit"]',
-    errorMessage: '//div[contains(@class, "form-error")]'
+    errorMessage: '//div[contains(@class, "form-error")]',
+    successMessage : '//div[@id="resetSuccess"]'
 };
