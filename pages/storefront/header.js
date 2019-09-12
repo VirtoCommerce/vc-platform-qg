@@ -8,5 +8,6 @@ module.exports = {
     enUS_account: {
         openAccount: "//a[@href='/en-US/account']",
         logout: "//a[@id='customer_logout_link']"
-    }
+    },
+    searchInput : '//input[@name = "q"]'
 };
