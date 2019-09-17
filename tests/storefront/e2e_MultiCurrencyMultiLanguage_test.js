@@ -7,13 +7,15 @@ Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
     await I.moveCursorTo(storeOptions.storeSelector); 
     await I.moveCursorTo(storeOptions.language);
     await I.click(storeOptions.deutsch);
+    await I.click(storeOptions.cellPhoneTab);
     await I.click(storeOptions.firstProduct);
 
     var brandDE = await I.grabTextFrom(storeOptions.productDetails.brand);
     var displaySizeDE = await I.grabTextFrom(storeOptions.productDetails.displaySize);
+    //bug
     var weAlsoRecommendDE = await I.grabTextFrom(storeOptions.productDetails.weAlsoRecommend);
 
-    I.waitForVisible(storeOptions.productDetails.comparePrice, 10);
+    I.waitForElement(storeOptions.productDetails.comparePrice, 10);
     var comparePriceDE = await I.grabTextFrom(storeOptions.productDetails.comparePrice);
 
     var assert = require('assert');
@@ -24,10 +26,12 @@ Scenario('[Positive] Change language and currency', async (I, storeOptions) => {
 
     await I.moveCursorTo(storeOptions.storeSelector);
     await I.moveCursorTo(storeOptions.currency.selector);
-    I.wait(15);
+    I.waitForElement(storeOptions.currency.eur.selector, 10);
     await I.click(storeOptions.currency.eur.selector);
+    await I.click(storeOptions.cellPhoneTab);
     await I.click(storeOptions.firstProduct);
 
+    I.waitForElement(storeOptions.productDetails.price, 10);
     var price = await I.grabTextFrom(storeOptions.productDetails.price);
-    assert.ok(price.indexOf(storeOptions.currency.eur.sign) > -1);
+    assert.ok(await price.indexOf(storeOptions.currency.eur.sign) > -1);
 });

@@ -11,7 +11,8 @@ module.exports = {
     },
     language: '//div[@class="language"]/span[contains(text(), "Language")]',
     deutsch: '//div[@class="language"]/ul/li/a[contains(text(), "Deutsch")]',
-    firstProduct: '//*[@id="Electronics"]/main/div[4]/div[1]/a',
+    cellPhoneTab: '//*[@id="accessibleNav"]/li[3]',
+    firstProduct: '//div[@class="product-grid-image"]',
     productDetails: {
         brand: '//div[@class="properties"]/dl[1]/dt',
         brandDE: 'Marke',
