@@ -31,6 +31,24 @@ module.exports = function () {
             postalCode: '555'
         },
 
+        addresses: {
+            address1: {
+                firstName : "Ivan",
+                lastName : "Petrov",
+                company :  "Company_name",
+                addressLine1 : "Street_name",
+                addressLine2 : "3",
+                city :  "Town_name",
+                country :  "Canada",
+                region : "Alberta",
+                zip : "3232"
+            },
+            address2: {
+                firstName : "Peter",
+                country :  "Armenia",
+            },
+        },
+
         signIn: function () {
             this.waitForElement(this.loginForm.signInLink, 5);
             this.click(this.loginForm.signInLink);
